@@ -14,7 +14,7 @@ import (
 )
 
 var currentOsOnly = pflag.BoolP("current-only", "c", false, "Only download electron for the current os")
-
+var oses = []string{"windows","linux","darwin"}
 /*func Disembed(src string) ([]byte, error) {
 	if src == "astilectron.zip" {
 		return nil, nil
@@ -85,10 +85,11 @@ return nil, errors.New("Wrong argument!")
 
 func main() {
 	pflag.Parse()
+
 	if *currentOsOnly {
 		handleOS(runtime.GOOS, runtime.GOARCH)
 	} else {
-		for _, o := range astilectron.ValidOSes() {
+		for _, o := range oses {
 			for _, a := range []string{"amd64", "386"} {
 				handleOS(o, a)
 			}
